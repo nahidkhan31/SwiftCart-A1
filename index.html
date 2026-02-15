@@ -1,20 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SwiftCart || Fast and Reliable</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-    
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+      .hero-bg {
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+          url("assets/banner-image.png");
+        background-size: cover;
+        background-position: center;
+      }
+      .nav-active {
+        color: #4f46e5 !important;
+        font-weight: bold;
+        border-bottom: 2px solid #4f46e5;
+      }
+      .cat-active {
+        background-color: #4f46e5 !important;
+        color: white !important;
+        border: none !important;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- navbar -->
+    <nav class="navbar bg-base-300 shadow-sm sticky top-0 z-50 px-4 md:px-12">
+      <div class="navbar-start">
+        <a
+          class="text-2xl font-bold text-[#4f46e5] cursor-pointer"
+          onclick="showSection('home')"
+          >SwiftCart</a
+        >
+      </div>
+
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1 font-semibold gap-4">
+          <li>
+            <a id="nav-home" onclick="showSection('home')" class="nav-active"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a id="nav-products" onclick="showSection('products')">Products</a>
+          </li>
+          <li><a id="nav-about" onclick="showSection('about')">About</a></li>
+          <li>
+            <a id="nav-contact" onclick="showSection('contact')">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="navbar-end gap-2">
+        <div class="indicator cursor-pointer mr-3">
+          <span
+            class="indicator-item badge badge-secondary badge-sm"
+            id="cart-count"
+            >0</span
+          >
+          <i class="fa-solid fa-cart-shopping text-xl"></i>
+        </div>
+        <div class="dropdown dropdown-end lg:hidden">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <i class="fa-solid fa-bars-staggered text-xl"></i>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-base-100 rounded-box w-52 border">
+            <li><a id="m-nav-home" onclick="showSection('home')">Home</a></li>
+            <li>
+              <a id="m-nav-products" onclick="showSection('products')"
+                >Products</a
+              >
+            </li>
+            <li>
+              <a id="m-nav-about" onclick="showSection('about')">About</a>
+            </li>
+            <li>
+              <a id="m-nav-contact" onclick="showSection('contact')">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
 
+    <main id="main-content">
+      <!-- banner section -->
+      <section class="hero min-h-[90vh] hero-bg text-white px-4 md:px-12">
+        <div class="hero-content justify-start w-full">
+          <div class="max-w-2xl text-left">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">Best Collection for You</h1>
+            <p class="mb-8 text-lg opacity-90 max-w-lg">
+              Discover the latest trends with confidence and style at SwiftCart.
+            </p>
+            <button
+              class="btn bg-[#4f46e5] hover:bg-[#4338ca] border-none text-white px-10 btn-md rounded-md"
+              onclick="showSection('products')">
+              Shop Now
+            </button>
+          </div>
+        </div>
+      </section>
 
+      <!-- service section -->
+       <section class="container mx-auto my-16 px-4 text-center">
+          <h2 class="text-3xl font-bold mb-2">Why Choose Us</h2>
+          <p class="opacity-60 mb-12 italic">
+            We provide the best shopping experience with top-notch services.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+              class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
+              <div
+                class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
+                <i class="fa-solid fa-truck"></i>
+              </div>
+              <h3 class="font-bold">Fast Delivery</h3>
+              <p class="text-xs opacity-60 mt-2 text-center">
+                Get your orders delivered to your doorstep quickly and
+                efficiently.
+              </p>
+            </div>
+            <div
+              class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
+              <div
+                class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <h3 class="font-bold">24/7 Support</h3>
+              <p class="text-xs opacity-60 mt-2 text-center">
+                Our support team is available around the clock to assist you.
+              </p>
+            </div>
+            <div
+              class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
+              <div
+                class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3 class="font-bold">Secure Payment</h3>
+              <p class="text-xs opacity-60 mt-2 text-center">
+                Experience safe and secure transactions with our encrypted
+                systems.
+              </p>
+            </div>
+            <div
+              class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
+              <div
+                class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
+                <i class="fa-solid fa-rotate-right"></i>
+              </div>
+              <h3 class="font-bold">Easy Returns</h3>
+              <p class="text-xs opacity-60 mt-2 text-center">
+                Not satisfied? Return your products easily within 30 days.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      <!-- faq section -->
+       <section id="faq-page" class="hidden container mx-auto my-16 px-4">
+        <h1 class="text-2xl font-bold text-center mb-5">FAQ</h1>
+        <div class="collapse collapse-plus bg-base-100 border border-base-300">
+  <input type="radio" name="my-accordion-3" checked="checked" />
+  <div class="collapse-title font-semibold">How do I create an account?</div>
+  <div class="collapse-content text-sm">Click the "Sign Up" button in the top right corner and follow the registration process.</div>
+</div>
+<div class="collapse collapse-plus bg-base-100 border border-base-300">
+  <input type="radio" name="my-accordion-3" />
+  <div class="collapse-title font-semibold">I forgot my password. What should I do?</div>
+  <div class="collapse-content text-sm">Click on "Forgot Password" on the login page and follow the instructions sent to your email.</div>
+</div>
+<div class="collapse collapse-plus bg-base-100 border border-base-300">
+  <input type="radio" name="my-accordion-3" />
+  <div class="collapse-title font-semibold">How do I update my profile information?</div>
+  <div class="collapse-content text-sm">Go to "My Account" settings and select "Edit Profile" to make changes.</div>
+</div>
+       </section>
+    </main>
 
     <!-- added js file -->
-     <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
