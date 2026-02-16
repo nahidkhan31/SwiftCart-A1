@@ -30,6 +30,20 @@
         color: white !important;
         border: none !important;
       }
+      @keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
     </style>
   </head>
   <body class="bg-gray-50">
@@ -61,7 +75,7 @@
       </div>
 
       <div class="navbar-end gap-2">
-        <div class="indicator cursor-pointer mr-3">
+        <div onclick="showSection('cart')" class="indicator cursor-pointer mr-3">
           <span
             class="indicator-item badge badge-secondary badge-sm"
             id="cart-count"
@@ -94,87 +108,102 @@
     </nav>
 
     <main id="main-content">
+      <!-- card section -->
+       <section id="cart-page" class="hidden container mx-auto my-12 px-4 "> 
+        <h2 class="text-3xl font-bold text-center mb-6">Your Cart</h2> 
+        <div id="cart-items" class="space-y-4 max-w-3xl mx-auto"></div>
+        <div id="cart-total" class="max-w-3xl mx-auto"></div>
+         <div class="text-center mt-6"> 
+          <button onclick="showSection('products')" class="btn bg-indigo-600 text-white"> Continue Shopping </button> 
+        </div> 
+      </section>
+
+       </section>
       <!-- banner section -->
       <div id="home-page">
         <section class="hero min-h-[90vh] hero-bg text-white px-4 md:px-12">
-        <div class="hero-content justify-start w-full">
-          <div class="max-w-2xl text-left">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
-              Best Collection for You
-            </h1>
-            <p class="mb-8 text-lg opacity-90 max-w-lg">
-              Discover the latest trends with confidence and style at SwiftCart.
-            </p>
-            <button
-              class="btn bg-[#4f46e5] hover:bg-[#4338ca] border-none text-white px-10 btn-md rounded-md"
-              onclick="showSection('products')">
-              Shop Now
-            </button>
+          <div class="hero-content justify-start w-full">
+            <div class="max-w-2xl text-left">
+              <h1
+                class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+                Best Collection for You
+              </h1>
+              <p class="mb-8 text-lg opacity-90 max-w-lg">
+                Discover the latest trends with confidence and style at
+                SwiftCart.
+              </p>
+              <button
+                class="btn bg-[#4f46e5] hover:bg-[#4338ca] border-none text-white px-10 btn-md rounded-md"
+                onclick="showSection('products')">
+                Shop Now
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- service section -->
-      <section class="container mx-auto my-16 px-4 text-center">
-        <h2 class="text-3xl font-bold mb-2">Why Choose Us</h2>
-        <p class="opacity-60 mb-12 italic">
-          We provide the best shopping experience with top-notch services.
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div
-            class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
+        <!-- service section -->
+        <section class="container mx-auto my-16 px-4 text-center">
+          <h2 class="text-3xl font-bold mb-2">Why Choose Us</h2>
+          <p class="opacity-60 mb-12 italic">
+            We provide the best shopping experience with top-notch services.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div
-              class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
-              <i class="fa-solid fa-truck"></i>
+              class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
+              <div
+                class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
+                <i class="fa-solid fa-truck"></i>
+              </div>
+              <h3 class="font-bold">Fast Delivery</h3>
+              <p class="text-xs opacity-60 mt-2 text-center">
+                Get your orders delivered to your doorstep quickly and
+                efficiently.
+              </p>
             </div>
-            <h3 class="font-bold">Fast Delivery</h3>
-            <p class="text-xs opacity-60 mt-2 text-center">
-              Get your orders delivered to your doorstep quickly and
-              efficiently.
-            </p>
-          </div>
-          <div
-            class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
             <div
-              class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
-              <i class="fa-solid fa-headset"></i>
+              class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
+              <div
+                class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <h3 class="font-bold">24/7 Support</h3>
+              <p class="text-xs opacity-60 mt-2 text-center">
+                Our support team is available around the clock to assist you.
+              </p>
             </div>
-            <h3 class="font-bold">24/7 Support</h3>
-            <p class="text-xs opacity-60 mt-2 text-center">
-              Our support team is available around the clock to assist you.
-            </p>
-          </div>
-          <div
-            class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
             <div
-              class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
-              <i class="fa-solid fa-shield-halved"></i>
+              class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
+              <div
+                class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3 class="font-bold">Secure Payment</h3>
+              <p class="text-xs opacity-60 mt-2 text-center">
+                Experience safe and secure transactions with our encrypted
+                systems.
+              </p>
             </div>
-            <h3 class="font-bold">Secure Payment</h3>
-            <p class="text-xs opacity-60 mt-2 text-center">
-              Experience safe and secure transactions with our encrypted
-              systems.
-            </p>
-          </div>
-          <div
-            class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
             <div
-              class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
-              <i class="fa-solid fa-rotate-right"></i>
+              class="card bg-white p-8 shadow-sm border border-gray-100 items-center hover:bg-green-300">
+              <div
+                class="w-12 h-12 bg-indigo-50 text-[#4f46e5] flex items-center justify-center rounded-lg text-xl mb-4">
+                <i class="fa-solid fa-rotate-right"></i>
+              </div>
+              <h3 class="font-bold">Easy Returns</h3>
+              <p class="text-xs opacity-60 mt-2 text-center">
+                Not satisfied? Return your products easily within 30 days.
+              </p>
             </div>
-            <h3 class="font-bold">Easy Returns</h3>
-            <p class="text-xs opacity-60 mt-2 text-center">
-              Not satisfied? Return your products easily within 30 days.
-            </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- trading section -->
-      <section class="container mx-auto my-16 px-4">
-        <h2 class="text-3xl font-bold mb-8">Trading Now</h2>
-        <div id="trending-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
-      </section>
+        <!-- trading section -->
+        <section class="container mx-auto my-16 px-4">
+          <h2 class="text-3xl font-bold mb-8">Trading Now</h2>
+          <div
+            id="trending-grid"
+            class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        </section>
       </div>
 
       <!-- product page -->
@@ -190,37 +219,504 @@
         </section>
       </div>
 
+      <!-- about section -->
+      <section
+        id="about-page"
+        class="hidden container mx-auto my-16 px-4 max-w-3xl text-center">
+        <h2 class="text-4xl font-bold text-[#4f46e5] mb-6">About SwiftCart</h2>
+        <p class="text-lg opacity-75">
+          SwiftCart হলো একটি আধুনিক অনলাইন শপ যেখানে গুণমান এবং আস্থার সংমিশ্রণ
+          ঘটে। আমাদের লক্ষ্য সাশ্রয়ী মূল্যে গ্রাহকদের দোরগোড়ায় সেরা পণ্য পৌঁছে
+          দেওয়া।
+        </p>
+      </section>
+
+      <!-- contract section -->
+      <section
+        id="contact-page"
+        class="hidden container mx-auto my-16 px-4 max-w-5xl">
+        <h2 class="text-3xl font-bold text-center mb-10">Get In Touch</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="space-y-4">
+            <div
+              class="flex gap-4 p-5 bg-white shadow-sm rounded-xl border border-gray-100">
+              <i class="fa-solid fa-phone text-[#4f46e5] text-xl"> </i>
+              <div>
+                <p class="font-bold">Helpline</p>
+                <p class="text-sm opacity-60">16247, +880 190539XXXX</p>
+              </div>
+            </div>
+            <div
+              class="flex gap-4 p-5 bg-white shadow-sm rounded-xl border border-gray-100">
+              <i class="fa-solid fa-envelope text-[#4f46e5] text-xl"></i>
+              <div>
+                <p class="font-bold">Email</p>
+                <p class="text-sm opacity-60">support@swiftcart.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-white p-8 border shadow-sm">
+            <input
+              type="text"
+              placeholder="Name"
+              class="input input-bordered mb-4" />
+            <textarea
+              class="textarea textarea-bordered mb-4"
+              placeholder="Your Message"></textarea>
+            <button class="btn bg-[#4f46e5] text-white">Send</button>
+          </div>
+        </div>
+      </section>
+
       <!-- faq section -->
-      <section id="faq-page" class="hidden container mx-auto my-16 px-4">
-        <h1 class="text-2xl font-bold text-center mb-5">FAQ</h1>
-        <div class="collapse collapse-plus bg-base-100 border border-base-300">
-          <input type="radio" name="my-accordion-3" checked="checked" />
-          <div class="collapse-title font-semibold">
-            How do I create an account?
+      <section
+        id="faq-page"
+        class="hidden container mx-auto my-16 px-4 max-w-4xl">
+        <div class="text-center mb-12">
+          <h1 class="text-4xl font-extrabold text-gray-800">
+            Frequently Asked Questions
+          </h1>
+          <div class="w-24 h-1 bg-[#4f46e5] mx-auto mt-4 rounded-full"></div>
+          <p class="mt-4 text-gray-500 italic">
+            জাভাস্ক্রিপ্ট এবং ডেভেলপমেন্ট সম্পর্কিত কিছু সাধারণ প্রশ্নের উত্তর
+            এখানে পাবেন।
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div
+            class="collapse collapse-plus bg-white border border-gray-200 shadow-sm rounded-xl hover:border-[#4f46e5] transition-colors duration-300">
+            <input type="radio" name="my-accordion-3" checked="checked" />
+            <div class="collapse-title text-lg font-bold text-gray-700">
+              What is the difference between null and undefined?
+            </div>
+            <div class="collapse-content text-gray-600 leading-relaxed">
+              <div class="divider mt-0"></div>
+              <p>
+                <span class="badge badge-primary badge-sm mr-2 text-white"
+                  >Undefined:</span
+                >
+                যখন একটি ভেরিয়েবল ডিক্লেয়ার করা হয় কিন্তু কোনো ভ্যালু
+                অ্যাসাইন করা হয় না, তখন তার মান থাকে undefined। এটি
+                জাভাস্ক্রিপ্টের একটি ডিফল্ট ভ্যালু।
+              </p>
+              <p class="mt-2">
+                <span class="badge badge-secondary badge-sm mr-2 text-white"
+                  >Null:</span
+                >
+                এটি একটি অ্যাসাইনমেন্ট ভ্যালু। যখন আমরা ইচ্ছা করে কোনো
+                ভেরিয়েবলকে "খালি" বা "কিছু নেই" বোঝাতে চাই, তখন আমরা null
+                ব্যবহার করি।
+              </p>
+            </div>
           </div>
-          <div class="collapse-content text-sm">
-            Click the "Sign Up" button in the top right corner and follow the
-            registration process.
+
+          <div
+            class="collapse collapse-plus bg-white border border-gray-200 shadow-sm rounded-xl hover:border-[#4f46e5] transition-colors duration-300">
+            <input type="radio" name="my-accordion-3" />
+            <div class="collapse-title text-lg font-bold text-gray-700">
+              What is the use of the map() function in JavaScript? How is it
+              different from forEach()?
+            </div>
+            <div class="collapse-content text-gray-600 leading-relaxed">
+              <div class="divider mt-0"></div>
+              <p>
+                <span class="font-bold text-indigo-600">map():</span> একটি
+                অ্যারের প্রতিটি এলিমেন্টের ওপর কাজ করে এবং ফলাফল হিসেবে একটি
+                <span class="underline decoration-indigo-300">নতুন অ্যারে</span>
+                রিটার্ন করে।
+              </p>
+              <p class="mt-2">
+                <span class="font-bold text-rose-500">forEach():</span>
+                শুধুমাত্র অ্যারের প্রতিটি এলিমেন্টের ওপর লুপ চালায়, কিন্তু এটি
+                কোনো কিছু রিটার্ন করে না। যখন কোনো নতুন অ্যারে দরকার হয় না, তখন
+                এটি ব্যবহার করা হয়।
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="collapse collapse-plus bg-white border border-gray-200 shadow-sm rounded-xl hover:border-[#4f46e5] transition-colors duration-300">
+            <input type="radio" name="my-accordion-3" />
+            <div class="collapse-title text-lg font-bold text-gray-700">
+              What is the difference between == and ===?
+            </div>
+            <div class="collapse-content text-gray-600 leading-relaxed">
+              <div class="divider mt-0"></div>
+              <p>
+                <span
+                  class="font-bold text-gray-800 underline decoration-warning"
+                  >== (Loose Equality):</span
+                >
+                এটি শুধুমাত্র ভ্যালু চেক করে। যেমন:
+                <code class="bg-gray-100 px-1 rounded">5 == "5"</code> সত্য
+                (True) হবে।
+              </p>
+              <p class="mt-2">
+                <span
+                  class="font-bold text-gray-800 underline decoration-success"
+                  >=== (Strict Equality):</span
+                >
+                এটি ভ্যালু এবং ডেটা টাইপ উভয়ই চেক করে। যেমন:
+                <code class="bg-gray-100 px-1 rounded">5 === "5"</code> মিথ্যা
+                (False) হবে।
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="collapse collapse-plus bg-white border border-gray-200 shadow-sm rounded-xl hover:border-[#4f46e5] transition-colors duration-300">
+            <input type="radio" name="my-accordion-3" />
+            <div class="collapse-title text-lg font-bold text-gray-700">
+              What is the significance of async/await in fetching API data?
+            </div>
+            <div class="collapse-content text-gray-600 leading-relaxed">
+              <div class="divider mt-0"></div>
+              <p>
+                async/await ব্যবহার করলে এসিনক্রোনাস (Asynchronous) কোড লিখতে
+                সহজ হয় এবং এটি দেখতে সিনক্রোনাস কোডের মতো মনে হয়। এটি Promise
+                হ্যান্ডেল করার জন্য ব্যবহার করা হয় যাতে কোড পরিষ্কার থাকে এবং
+                এরর হ্যান্ডলিং সহজ হয়। এটি কলব্যাক হেল (Callback Hell) এড়াতে
+                সাহায্য করে।
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="collapse collapse-plus bg-white border border-gray-200 shadow-sm rounded-xl hover:border-[#4f46e5] transition-colors duration-300">
+            <input type="radio" name="my-accordion-3" />
+            <div class="collapse-title text-lg font-bold text-gray-700">
+              Explain the concept of Scope in JavaScript (Global, Function,
+              Block).
+            </div>
+            <div class="collapse-content text-gray-600 leading-relaxed">
+              <div class="divider mt-0"></div>
+              <ul class="list-disc ml-5 space-y-2">
+                <li>
+                  <span class="font-bold text-indigo-600">Global Scope:</span>
+                  ফাংশন বা ব্লকের বাইরে ডিক্লেয়ার করা ভেরিয়েবল যা যেকোনো জায়গা
+                  থেকে অ্যাক্সেস করা যায়।
+                </li>
+                <li>
+                  <span class="font-bold text-indigo-600">Function Scope:</span>
+                  ফাংশনের ভেতরে ডিক্লেয়ার করা ভেরিয়েবল শুধুমাত্র ওই ফাংশনের
+                  ভেতরেই কাজ করে।
+                </li>
+                <li>
+                  <span class="font-bold text-indigo-600">Block Scope:</span>
+                  <code class="bg-gray-100 px-1 rounded">let</code> বা
+                  <code class="bg-gray-100 px-1 rounded">const</code> দিয়ে
+                  ব্লকের ({ }) ভেতরে ডিক্লেয়ার করা ভেরিয়েবল যা শুধুমাত্র ওই
+                  ব্লকেই সীমাবদ্ধ।
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="collapse collapse-plus bg-base-100 border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold">
-            I forgot my password. What should I do?
+      </section>
+
+      <!-- shipping section -->
+      <section
+        id="shipping-page"
+        class="hidden min-h-[70vh] flex items-center justify-center p-6">
+        <div
+          class="max-w-md w-full bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-2xl">
+          <div class="bg-indigo-600 p-8 text-center">
+            <div
+              class="inline-flex items-center justify-center w-16 h-16 bg-indigo-500/30 rounded-full mb-4">
+              <i class="fa-solid fa-truck-fast text-white text-3xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white">Shipping Information</h2>
+            <p class="text-indigo-100 text-sm opacity-80">
+              Fast & reliable delivery to your doorstep
+            </p>
           </div>
-          <div class="collapse-content text-sm">
-            Click on "Forgot Password" on the login page and follow the
-            instructions sent to your email.
+
+          <div class="p-8">
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="mt-1 bg-green-100 p-2 rounded-lg">
+                  <i class="fa-solid fa-gift text-green-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Free Delivery</h4>
+                  <p class="text-sm text-gray-500">
+                    Applicable on all orders over
+                    <span class="font-bold text-indigo-600">$50</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="mt-1 bg-blue-100 p-2 rounded-lg">
+                  <i class="fa-solid fa-calendar-check text-blue-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Standard Shipping</h4>
+                  <p class="text-sm text-gray-500">
+                    Expect your package within
+                    <span class="font-semibold text-gray-700"
+                      >3-5 Business Days</span
+                    >
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="mt-1 bg-orange-100 p-2 rounded-lg">
+                  <i class="fa-solid fa-bolt text-orange-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Express Delivery</h4>
+                  <p class="text-sm text-gray-500">
+                    Next Day Shipping available for premium members
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-gray-100">
+              <p class="text-xs text-center text-gray-400 italic">
+                * Final shipping rates will be calculated at the checkout page.
+              </p>
+              <button
+                onclick="showSection('products')"
+                class="w-full mt-6 btn bg-indigo-600 hover:bg-indigo-700 text-white border-none rounded-xl">
+                Back to Shopping
+              </button>
+            </div>
           </div>
         </div>
-        <div class="collapse collapse-plus bg-base-100 border border-base-300">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title font-semibold">
-            How do I update my profile information?
+      </section>
+
+      <!-- return section -->
+      <section
+        id="return-page"
+        class="hidden min-h-[70vh] flex items-center justify-center p-6">
+        <div
+          class="max-w-md w-full bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-2xl">
+          <div class="bg-rose-500 p-8 text-center text-white">
+            <div
+              class="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4">
+              <i class="fa-solid fa-rotate-left text-3xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold">Return & Refund</h2>
+            <p class="text-rose-100 text-sm opacity-90">
+              Hassle-free returns for your peace of mind
+            </p>
           </div>
-          <div class="collapse-content text-sm">
-            Go to "My Account" settings and select "Edit Profile" to make
-            changes.
+
+          <div class="p-8">
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="mt-1 bg-rose-50 p-2 rounded-lg">
+                  <i class="fa-solid fa-calendar-days text-rose-500"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800">30-Day Returns</h4>
+                  <p class="text-sm text-gray-500">
+                    Not satisfied? Return it within
+                    <span class="font-bold">30 days</span> with no questions
+                    asked.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="mt-1 bg-emerald-50 p-2 rounded-lg">
+                  <i class="fa-solid fa-arrows-rotate text-emerald-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Free Exchanges</h4>
+                  <p class="text-sm text-gray-500">
+                    Wrong size or color? We'll swap it for you
+                    <span class="text-emerald-600 font-semibold"
+                      >absolutely free</span
+                    >.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="mt-1 bg-amber-50 p-2 rounded-lg">
+                  <i class="fa-solid fa-hand-holding-dollar text-amber-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Quick Refunds</h4>
+                  <p class="text-sm text-gray-500">
+                    Refunds are processed to your original payment method within
+                    <span class="font-bold">7 days</span>.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="bg-gray-50 p-4 rounded-xl border border-dashed border-gray-200">
+                <p
+                  class="text-[11px] text-gray-400 leading-tight uppercase font-bold mb-1 tracking-wider">
+                  How to return?
+                </p>
+                <p class="text-xs text-gray-500 italic">
+                  Pack your items → Attach original invoice → Drop at any
+                  courier point.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-8 space-y-3">
+              <button
+                class="w-full btn bg-rose-500 hover:bg-rose-600 text-white border-none rounded-xl">
+                <i class="fa-solid fa-paper-plane mr-2"></i> Start Return
+                Request
+              </button>
+              <button
+                onclick="showSection('home')"
+                class="w-full btn btn-ghost text-gray-400 hover:text-gray-600">
+                Back to Home
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- privacy section -->
+      <section
+        id="privacyPolicy-page"
+        class="hidden min-h-[80vh] flex items-center justify-center p-6 py-16">
+        <div
+          class="max-w-2xl w-full bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-2xl">
+          <div
+            class="bg-[#1a2332] p-10 text-center text-white relative overflow-hidden">
+            <div
+              class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-indigo-500/20 rounded-full blur-2xl"></div>
+
+            <div
+              class="inline-flex items-center justify-center w-20 h-20 bg-indigo-500/20 rounded-full mb-4 border border-indigo-500/30">
+              <i class="fa-solid fa-shield-halved text-4xl text-indigo-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold">Privacy Policy</h2>
+            <p class="text-slate-400 text-sm mt-2">
+              Your security is our top priority at SwiftCart
+            </p>
+          </div>
+
+          <div class="p-8 md:p-12">
+            <div class="space-y-8">
+              <div class="flex gap-5">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600">
+                  <i class="fa-solid fa-lock text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800 text-lg">
+                    100% Data Encryption
+                  </h4>
+                  <p class="text-sm text-gray-500 leading-relaxed">
+                    We use industry-standard SSL encryption to protect your
+                    personal and payment information. Your data is converted
+                    into secure code that is unreadable by unauthorized parties.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-5">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600">
+                  <i class="fa-solid fa-user-secret text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800 text-lg">
+                    No Third-Party Sharing
+                  </h4>
+                  <p class="text-sm text-gray-500 leading-relaxed">
+                    We never sell, rent, or trade your personal data. Your
+                    information is only used to process orders and improve your
+                    shopping experience at SwiftCart.
+                  </p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                <div
+                  class="p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:border-indigo-200 transition-colors cursor-pointer group">
+                  <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-cookie-bite text-indigo-500"></i>
+                    <span
+                      class="font-bold text-gray-700 group-hover:text-indigo-600"
+                      >Cookie Policy</span
+                    >
+                  </div>
+                  <p
+                    class="text-[11px] text-gray-400 mt-1 uppercase tracking-tighter">
+                    Manage your preferences
+                  </p>
+                </div>
+                <div
+                  class="p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:border-indigo-200 transition-colors cursor-pointer group">
+                  <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-file-contract text-indigo-500"></i>
+                    <span
+                      class="font-bold text-gray-700 group-hover:text-indigo-600"
+                      >Terms of Service</span
+                    >
+                  </div>
+                  <p
+                    class="text-[11px] text-gray-400 mt-1 uppercase tracking-tighter">
+                    Legal guidelines
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-gray-100">
+              <div
+                class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3 group">
+                    <div
+                      class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                      <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <div>
+                      <p
+                        class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">
+                        Helpline
+                      </p>
+                      <p class="text-sm font-bold text-gray-800">
+                        16247, +880 190539XXXX
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3 group">
+                    <div
+                      class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all">
+                      <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                      <p
+                        class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">
+                        Support Email
+                      </p>
+                      <p class="text-sm font-bold text-gray-800">
+                        support@swiftcart.com
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col items-center gap-2">
+                  <button
+                    onclick="showSection('home')"
+                    class="btn btn-md bg-indigo-600 hover:bg-indigo-700 text-white border-none px-10 rounded-xl shadow-lg shadow-indigo-200">
+                    I Understand
+                  </button>
+                  <p class="text-[10px] text-gray-400">
+                    Available 24/7 for your help
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -287,13 +783,23 @@
               >
             </li>
             <li>
-              <a class="hover:text-white cursor-pointer transition">Shipping</a>
+              <a
+                onclick="showSection('shipping')"
+                class="hover:text-white cursor-pointer transition"
+                >Shipping</a
+              >
             </li>
             <li>
-              <a class="hover:text-white cursor-pointer transition">Returns</a>
+              <a
+                onclick="showSection('return')"
+                class="hover:text-white cursor-pointer transition"
+                >Returns</a
+              >
             </li>
             <li>
-              <a class="hover:text-white cursor-pointer transition"
+              <a
+                onclick="showSection('privacyPolicy')"
+                class="hover:text-white cursor-pointer transition"
                 >Privacy Policy</a
               >
             </li>
@@ -331,8 +837,11 @@
       </div>
     </footer>
 
+    <!-- alret -->
+     <div id="toast-container" class="fixed top-6 right-6 z-[999] space-y-3"></div>
+
     <!-- modal -->
-     <dialog id="product_modal" class="modal">
+    <dialog id="product_modal" class="modal">
       <div class="modal-box w-11/12 max-w-2xl">
         <div id="modal-body" class="flex flex-col md:flex-row gap-8"></div>
         <div class="modal-action">
